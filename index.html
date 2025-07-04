@@ -70,3 +70,57 @@
         transform-origin: center;
       }
     }
+
+    @media (max-width: 768px) {
+      .flipbook-wrapper {
+        transform: scale(0.6);
+        transform-origin: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-overlay"></div>
+
+  <div class="flipbook-wrapper">
+    <div id="flipbook">
+      <div class="page" style="background-image: url('Jpegs/1.png');"></div>
+      <div class="page" style="background-image: url('Jpegs/2.png');"></div>
+      <div class="page" style="background-image: url('Jpegs/3.png');"></div>
+      <div class="page" style="background-image: url('Jpegs/4.png');"></div>
+      <div class="page" style="background-image: url('Jpegs/5.png');"></div>
+      <div class="page" style="background-image: url('Jpegs/6.png');"></div>
+      <div class="page" style="background-image: url('Jpegs/7.png');"></div>
+      <div class="page" style="background-image: url('Jpegs/8.4.png');"></div>
+      <div class="page" style="background-image: url('Jpegs/9.png');"></div>
+    </div>
+
+    <div class="click-zone click-left"></div>
+    <div class="click-zone click-right"></div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      const $flipbook = $("#flipbook");
+
+      $flipbook.turn({
+        width: 1024,
+        height: 700,
+        autoCenter: true,
+        elevation: 50,
+        gradients: true,
+        duration: 800,
+        display: 'double'
+      });
+
+      $(".click-left").on("click", function () {
+        $flipbook.turn("previous");
+      });
+
+      $(".click-right").on("click", function () {
+        $flipbook.turn("next");
+      });
+    });
+  </script>
+</body>
+</html>
