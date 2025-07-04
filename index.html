@@ -105,6 +105,7 @@
     </div>
 
     <script>
+    $(document).ready(function () {
         const $flipbook = $("#flipbook");
 
         $flipbook.turn({
@@ -123,6 +124,7 @@
         $(".click-right").on("click", function () {
             $flipbook.turn("next");
         });
-    </script>
+    });
+</script>
 </body>
 </html>
