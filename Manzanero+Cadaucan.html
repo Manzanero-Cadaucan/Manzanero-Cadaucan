@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manzanero + Cadaucan</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.turnjs.com/lib/turn.min.js"></script>
+    <style>
+        /* Background overlay with 50% opacity */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('Jpegs/bg.jfif') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+        }
+
+        .flipbook-wrapper {
+            position: relative;
+            width: 1024px;
+            height: 683px;
+        }
+
+        #flipbook {
+            width: 100%;
+            height: 100%;
+        }
+
+        #flipbook .page {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Clickable zones */
+        .click-zone {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        .click-left {
+            left: 0;
+        }
+
+        .click-right {
+            right: 0;
+        }
+
+        /* Optional: Make it scale better on smaller screens */
+        @media (max-width: 1100px) {
+            .flipbook-wrapper {
+                transform: scale(0.8);
+                transform-origin: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .flipbook-wrapper {
+                transform: scale(0.6);
+                transform-origin: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background with 50% opacity -->
+    <div class="background-overlay"></div>
+
+    <!-- Flipbook container -->
+    <div class="flipbook-wrapper">
+        <div id="flipbook">
+            <div class="page" style="background-image: url('Jpegs/1.png');"></div>
+            <div class="page" style="background-image: url('Jpegs/2.png');"></div>
+            <div class="page" style="background-image: url('Jpegs/3.png');"></div>
+            <div class="page" style="background-image: url('Jpegs/4.png');"></div>
+            <div class="page" style="background-image: url('Jpegs/5.png');"></div>
+            <div class="page" style="background-image: url('Jpegs/6.png');"></div>
+            <div class="page" style="background-image: url('Jpegs/7.png');"></div>
+            <div class="page" style="background-image: url('Jpegs/8.4.png');"></div>
+            <div class="page" style="background-image: url('Jpegs/9.png');"></div>
+        </div>
+
+        <!-- Clickable zones -->
+        <div class="click-zone click-left"></div>
+        <div class="click-zone click-right"></div>
+    </div>
+
+    <script>
+        const $flipbook = $("#flipbook");
+
+        $flipbook.turn({
+            width: 1024,
+            height: 700,
+            autoCenter: true,
+            elevation: 50,
+            gradients: true,
+            duration: 800
+        });
+
+        $(".click-left").on("click", function () {
+            $flipbook.turn("previous");
+        });
+
+        $(".click-right").on("click", function () {
+            $flipbook.turn("next");
+        });
+    </script>
+</body>
+</html>
