@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Manzanero + Cadaucan</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="js/turn.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -70,60 +70,3 @@
         transform-origin: center;
       }
     }
-
-    @media (max-width: 768px) {
-      .flipbook-wrapper {
-        transform: scale(0.6);
-        transform-origin: center;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="background-overlay"></div>
-
-  <div class="flipbook-wrapper">
-    <div id="flipbook">
-      <div class="page" style="background-image: url('Jpegs/1.png');"></div>
-      <div class="page" style="background-image: url('Jpegs/2.png');"></div>
-      <div class="page" style="background-image: url('Jpegs/3.png');"></div>
-      <div class="page" style="background-image: url('Jpegs/4.png');"></div>
-      <div class="page" style="background-image: url('Jpegs/5.png');"></div>
-      <div class="page" style="background-image: url('Jpegs/6.png');"></div>
-      <div class="page" style="background-image: url('Jpegs/7.png');"></div>
-      <div class="page" style="background-image: url('Jpegs/8.4.png');"></div>
-      <div class="page" style="background-image: url('Jpegs/9.png');"></div>
-    </div>
-
-    <div class="click-zone click-left"></div>
-    <div class="click-zone click-right"></div>
-  </div>
-
-<script>
-  $(document).ready(function () {
-    // Load Turn.js dynamically after jQuery is ready
-    $.getScript("https://cdn.jsdelivr.net/gh/blasten/turn.js@master/lib/turn.min.js", function () {
-      const $flipbook = $("#flipbook");
-
-      $flipbook.turn({
-        width: 1024,
-        height: 700,
-        autoCenter: true,
-        elevation: 50,
-        gradients: true,
-        duration: 800,
-        display: 'double'
-      });
-
-      $(".click-left").on("click", function () {
-        $flipbook.turn("previous");
-      });
-
-      $(".click-right").on("click", function () {
-        $flipbook.turn("next");
-      });
-    });
-  });
-</script>
-</body>
-</html>
